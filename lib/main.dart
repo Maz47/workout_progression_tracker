@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import './screen_notifier.dart';
 import './theme_notifier.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     MultiProvider(
       providers: [
@@ -19,7 +22,6 @@ void main() {
 }
 
 class App extends StatelessWidget {
-  const App({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,8 @@ class App extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: Provider.of<ScreenNotifier>(context).currentIndex,
       type: BottomNavigationBarType.fixed,
-      onTap: (index) => Provider.of<ScreenNotifier>(context, listen: false).changeScreen(index),
+      onTap: (index) => Provider.of<ScreenNotifier>(context, listen: false)
+          .changeScreen(index),
       items: [
         BottomNavigationBarItem(
           title: Text("Home"),

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "415619037821",
+    "firebase_url": "https://workout-progression-tracker.firebaseio.com",
+    "project_id": "workout-progression-tracker",
+    "storage_bucket": "workout-progression-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415619037821:android:d22f72e98025c6927e0f14",
+        "android_client_info": {
+          "package_name": "at.maz.workout.progression.tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415619037821-38anm3emhs28j5jp768he0okm11vd9rn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "at.maz.workout.progression.tracker",
+            "certificate_hash": "bdc406d2d9da2253e3dd3bbebb7534c16c589c69"
+          }
+        },
+        {
+          "client_id": "415619037821-mbj418te5o80s67fau78t82cb3hjtjfh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD4MSq5yPEv3446Wx-uzZ8jnt82lanAkw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415619037821-mbj418te5o80s67fau78t82cb3hjtjfh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
