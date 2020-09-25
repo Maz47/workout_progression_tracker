@@ -38,6 +38,9 @@ dependencies:
   # Shared Preferences Package
   shared_preferences: ^0.5.10
 
+  # SVG Image Package
+  flutter_svg: ^0.19.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

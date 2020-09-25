@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:workout_progression_tracker/models/custom_theme.dart';
-import 'package:workout_progression_tracker/screens/theme_chooser.dart';
-import 'package:workout_progression_tracker/theme_notifier.dart';
+
+import '../models/custom_theme.dart';
+import '../theme_notifier.dart';
+import 'theme_chooser.dart';
 
 class SettingsScreen extends StatelessWidget {
   @override

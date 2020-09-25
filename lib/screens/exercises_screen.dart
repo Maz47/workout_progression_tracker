@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../models/exercise.dart';
 import '../theme_notifier.dart';
 import 'exercise_detail_screen.dart';
+import 'exercise_screen.dart';
 
 class ExercisesScreen extends StatelessWidget {
   @override
@@ -32,40 +34,73 @@ class ExercisesScreen extends StatelessWidget {
   }
 
   _buildExercisesList(BuildContext context) {
-    CollectionReference users =
+    CollectionReference exercises =
         FirebaseFirestore.instance.collection('exercises');
 
     return StreamBuilder<QuerySnapshot>(
-      stream: users.snapshots(),
+      stream: exercises.snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Text('Something went wrong');
+          return Center(
+            child: Text(
+              'Something went wrong',
+              style: TextStyle(color: Colors.red),
+            ),
+          );
         }
-
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
+          return Center(
+            child: Text(
+              "Loading",
+            ),
+          );
         }
-
-        return new ListView(
-          children: snapshot.data.docs.map((DocumentSnapshot document) {
-            Exercise ex = Exercise.fromDocument(document);
-            return new ListTile(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ExerciseDetailScreen(
-                      exercise: ex,
-                    ),
-                  ),
-                );
-              },
-              title: new Text(ex.name + " - " + ex.bodyPart),
-              subtitle: new Text(ex.notes),
-            );
-          }).toList(),
-        );
+        if ((snapshot.data.docs.length > 0))
+          return _buildList(snapshot, context);
+        else
+          return _buildNoData();
       },
+    );
+  }
+
+  ListView _buildList(
+      AsyncSnapshot<QuerySnapshot> snapshot, BuildContext context) {
+    return ListView(
+      children: snapshot.data.docs.map((DocumentSnapshot document) {
+        Exercise ex = Exercise.fromDocument(document);
+        return new ListTile(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ExerciseScreen(
+                  exercise: ex,
+                ),
+              ),
+            );
+          },
+          title: new Text(ex.name + " - " + ex.bodyPart),
+          subtitle: new Text(ex.notes),
+        );
+      }).toList(),
+    );
+  }
+
+  Center _buildNoData() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            "assets/nod_data_cyan.svg",
+            width: 200,
+          ),
+          SizedBox(
+            height: 32.0,
+          ),
+          Text("No exercises available yet!"),
+        ],
+      ),
     );
   }
 }

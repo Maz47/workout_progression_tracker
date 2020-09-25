@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../theme_notifier.dart';
-import '../models/custom_theme.dart';
 import '../constants/themes.dart';
+import '../models/custom_theme.dart';
+import '../theme_notifier.dart';
 
 class ThemeChooser extends StatelessWidget {
   const ThemeChooser({Key key}) : super(key: key);

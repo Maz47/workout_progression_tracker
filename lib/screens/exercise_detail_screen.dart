@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:workout_progression_tracker/constants/body_parts.dart';
+import '../constants/body_parts.dart';
 
 import '../models/exercise.dart';
 import '../theme_notifier.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:workout_progression_tracker/models/custom_theme.dart';
+
+import '../models/custom_theme.dart';
 
 final CustomTheme kDefaultTheme = CustomTheme("Default", ThemeData.dark());
 final CustomTheme kRedTheme = new CustomTheme(
